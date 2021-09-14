@@ -1,5 +1,4 @@
 using System;
-using Game.NoviceGuide;
 using NoviceGuide.Scripts.System.Constraint;
 using NoviceGuide.Scripts.System.Nodes;
 using UnityEngine;
@@ -15,8 +14,8 @@ namespace NoviceGuide.Scripts.System
     /// </summary>
     public class NoviceGuideExecutor : MonoBehaviour
     {
-     
 
+        public Action<NoviceGuideTaskId> OnClickAction;
         /// <summary>
         /// 執行 Execute 之前會先通知好讓 <see cref="NoviceGuideConstraintBase"/> 來決定是否要讓此 script.enabled 
         /// </summary>
@@ -100,8 +99,8 @@ namespace NoviceGuide.Scripts.System
         {
             // 表示沒有下一筆了
             _noviceGuideSystem.OnDone?.Invoke(taskId, nextTaskId);
-            if (taskId == NoviceGuideTaskId.None ||
-                NoviceGuideManager.IsClientEndRecordPoint(nextTaskId))
+            if (taskId == NoviceGuideTaskId.None)
+                
             {
                 _noviceGuideSystem.Hide();
                 HideNode();
@@ -109,7 +108,7 @@ namespace NoviceGuide.Scripts.System
             else
             {
                 Next(nextTaskId);
-                // OnClickAction?.Inoke(nextTaskId);
+                OnClickAction?.Invoke(nextTaskId);
                 HideNode();
             }
         }

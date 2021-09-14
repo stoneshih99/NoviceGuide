@@ -12,10 +12,10 @@ namespace NoviceGuide.Scripts.Demo
 
         private void Start()
         {
-            // guideExecutor.OnClickAction = delegate(NoviceGuideTaskId taskId)
-            // {
-            //     SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-            // };
+            guideExecutor.OnClickAction = delegate(NoviceGuideTaskId taskId)
+            {
+                SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+            };
         }
     }
 }

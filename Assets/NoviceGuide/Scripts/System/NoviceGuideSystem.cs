@@ -16,7 +16,7 @@ namespace NoviceGuide.Scripts.System
 
         public const string TagName = "NoviceGuiderSystem";
 
-        [FormerlySerializedAs("storeBoardPlayer")] [SerializeField] private NoviceGuideStoryBoardPlayer storyBoardPlayer;
+        [SerializeField] private NoviceGuideStoryBoardPlayer storyBoardPlayer;
         [SerializeField] private Canvas rootCanvas;
         [SerializeField] private GuideController guideController;
         [SerializeField] private GuideController.GuideType guideType;
@@ -78,7 +78,7 @@ namespace NoviceGuide.Scripts.System
         /// </summary>
         public void Show()
         {
-            mainView.transform.localPosition = Vector3.zero;
+            // mainView.transform.position = Vector3.zero;
             guard.SetActive(true);
             guideController.DoReset();
         }

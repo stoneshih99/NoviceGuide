@@ -1,5 +1,3 @@
-using Audio;
-using Game.Battle;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -11,14 +9,13 @@ namespace NoviceGuide.Scripts.System.Story
     /// Frame 每一個影格都可以是一頁的說明圖、文字...等等
     /// </summary>
     [RequireComponent(typeof(Button))]
-    public class NoviceStoryBoard : MonoBehaviour, IAudio
+    public class NoviceStoryBoard : MonoBehaviour
     {
         public UnityAction<NoviceGuideTaskId> OnDone;
         [Tooltip("指定對應的任務編號")] [SerializeField] private NoviceGuideTaskId taskId;
         public NoviceGuideTaskId TaskId => taskId;
 
         [Tooltip("說明圖、文字...等等")] [SerializeField] private GameObject[] frames;
-        [Tooltip("播放的音效名稱")] [SerializeField] private string soundFx;
         
         /// <summary>
         /// 按鈕:下一頁
@@ -78,7 +75,6 @@ namespace NoviceGuide.Scripts.System.Story
         {
             var oldGo = frames[_currentFrame];
             oldGo.SetActive(false);
-            PlaySoundEffect();
             if (IsDone())
             {
                 Hide();
@@ -90,12 +86,7 @@ namespace NoviceGuide.Scripts.System.Story
             newGo.SetActive(true);
         }
 
-        private void PlaySoundEffect()
-        {
-            if (string.IsNullOrEmpty(soundFx)) return;
-            this.PlayFxSound(soundFx);
-        }
-
+     
         /// <summary>
         /// 是否已經播完了
         /// </summary>

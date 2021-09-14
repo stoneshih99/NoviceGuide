@@ -42,7 +42,9 @@ namespace NoviceGuide.Scripts.System
             if (!_parents.Contains(source)) return;
 
             var scale = source.transform.localScale;
-            source.transform.parent = FindParent(source).transform;
+            if (source.transform.parent == null) return;
+            
+            source.transform.SetParent(FindParent(source).transform);
             source.transform.localScale = scale;
             _clearBuffer.Add(source);
             source.SetActive(false);
