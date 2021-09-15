@@ -33,3 +33,6 @@ StoryBoardPlayer 資料結構
 
 ## How To Use
 請參照 Example 內的範例 
+
+使用範例使記得將場景置入 File->Build Settings
+![Build Settings](./Images/5.png)
